@@ -166,7 +166,7 @@ echo -e "--------------------------------------\n";
 
 gcc -Wall -fPIC -DMI_SERVBUILD  -I$LIB_DIR/include -I$INFORMIXDIR/incl/public -I$INFORMIXDIR/incl -c *.c
 if_cmd_failed
-gcc -Wl,-rpath=$LIB_DIR/lib,-L$LIB_DIR/lib -nodefaultlibs -static -lgcc -L/opt/glibc-2.14/lib64 -lwolfssl -lwolfmqtt *.o -shared -o informix_spark_streaming.so
+gcc -Wl,-rpath=$LIB_DIR/lib,-L$LIB_DIR/lib -lgcc -L/opt/glibc-2.14/lib64 -lwolfssl -lwolfmqtt *.o -shared -o informix_spark_streaming.so
 if_cmd_failed
 cp ./informix_spark_streaming.so $UDR_INSTALL_PATH
 if_cmd_failed "Unable to copy library to $UDR_INSTALL_PATH"
